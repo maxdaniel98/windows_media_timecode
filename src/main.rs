@@ -233,7 +233,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
             let mut selected_port: Option<&MidiOutputPort> = None;
 
-            for (i, p) in out_ports.iter().enumerate() {
+            for (_i, p) in out_ports.iter().enumerate() {
                 if midi_out.port_name(p).unwrap() == config_midi_device {
                     println!(
                         "Choosing the configured output port: {}",
@@ -387,7 +387,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
                                 //println!("[{session_id}/{source}] Model updated: {model:#?}")
                             }
-                            Media(model, image) => {
+                            Media(model, _image) => {
                                 let media = model.media.as_ref();
                                 media.map(|media| {
                                     let song_title = media.title.as_str();
@@ -397,16 +397,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                                     let song = get_song(&config, song_title, song_artist)
                                         .unwrap_or(serde_json::Value::Null);
 
-                                    if (song == serde_json::Value::Null
-                                        && disable_songs_outside_config)
+                                    if song == serde_json::Value::Null
+                                        && disable_songs_outside_config
                                     {
-                                        if (disable_songs_outside_config) {
+                                        if disable_songs_outside_config {
                                             enabled_for_song
                                                 .store(false, std::sync::atomic::Ordering::Relaxed);
                                         }
                                     }
 
-                                    if (song == serde_json::Value::Null) {
+                                    if song == serde_json::Value::Null {
                                         song_offset.store(0, std::sync::atomic::Ordering::Relaxed);
                                         println!("Song not found in config");
                                         return;
@@ -414,7 +414,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
                                     let offset = get_song_offset(&song).unwrap();
 
-                                    if (offset > 0) {
+                                    if offset > 0 {
                                         println!("Song offset: {}", offset);
                                     }
 
