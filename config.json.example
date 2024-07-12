@@ -1,4 +1,6 @@
 {
+  "midiDevice": "loopmidi",
+  "disableSongsOutsideConfig": true,
   "songs": [
     {
       "artist": "Sam Smith",
