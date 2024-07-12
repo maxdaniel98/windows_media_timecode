@@ -196,17 +196,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .checked_sub(last_update as u128)
                 .unwrap_or(0);
 
-            if (is_playing) {
+            if is_playing {
                 position = position + elapsed as i32;
             }
 
-            if (last_update != last_sent_update) {
+            if last_update != last_sent_update {
                 send_position(&mut conn_out, position).unwrap();
                 cloned_last_sent_position_update
                     .store(last_update, std::sync::atomic::Ordering::Relaxed);
             }
 
-            if (is_playing) {
+            if is_playing {
                 send_mtc_quarter_frame(&mut conn_out, position, message_index).unwrap();
             }
 
