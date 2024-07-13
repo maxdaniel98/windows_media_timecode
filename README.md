@@ -5,6 +5,9 @@
 ## Description 
 This software monitors the Windows Media Controls for song playback, and outputs the current position of a song as MIDI MTC Timecode. It is also possible to set offsets for specific songs, or disable outputting of MIDI for songs that are not in the config. 
 
+## Usage
+You can output MIDI timecode for most major playback software on Windows, including Spotify and YouTube (in Chrome). That way you can generate timecode synced light shows using Spotify playback. 
+
 ## Download
 Download the latest version from the [Releases page](https://github.com/maxdaniel98/windows_media_timecode/releases/latest). 
 
