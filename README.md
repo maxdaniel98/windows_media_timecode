@@ -13,7 +13,8 @@ You should provide a `config.json` file in the working directory of the program,
 
 This is a config example:
 
-```{
+```
+{
   "midiDevice": "loopmidi",
   "disableSongsOutsideConfig": true,
   "songs": [
